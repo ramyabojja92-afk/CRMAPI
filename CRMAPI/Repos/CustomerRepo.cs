@@ -16,11 +16,19 @@ namespace CRMAPI.Repos
         // Constructor to initialize the Cosmos DB container using the provided CosmosClient
         public CustomerRepo(CosmosClient client)
         {
-            _container = client
-            .GetDatabase("CRMDB")
-            .GetContainer("Customers");
-        }
+            var database = client
+                .CreateDatabaseIfNotExistsAsync("CRMDB")
+                .GetAwaiter()
+                .GetResult();
 
+            _container = database.Database
+                .CreateContainerIfNotExistsAsync(
+                    "Customers",
+                    "/id")
+                .GetAwaiter()
+                .GetResult()
+                .Container;
+        }
         // CREATE
         public async Task<Customer> AddAsync(Customer customer)
         {

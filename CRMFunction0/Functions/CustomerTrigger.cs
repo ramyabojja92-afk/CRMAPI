@@ -6,20 +6,20 @@ using Microsoft.Extensions.Logging;
 
 namespace CRMFunction0.Functions
 {
-    public class CosmosDBTrigger
+    public class CustomerTrigger
     {
-        private readonly ILogger<CosmosDBTrigger> _logger;
+        private readonly ILogger<CustomerTrigger> _logger;
         private readonly EmailService _emailService;
 
-        public CosmosDBTrigger(
-            ILogger<CosmosDBTrigger> logger,
+        public CustomerTrigger(
+            ILogger<CustomerTrigger> logger,
             EmailService emailService)
         {
             _logger = logger;
             _emailService = emailService;
         }
 
-        [Function("CosmosDBTrigger")]
+        [Function("CustomerTrigger")]
         public async Task Run(
             [CosmosDBTrigger(
                 databaseName: "CRMDB",
@@ -29,6 +29,8 @@ namespace CRMFunction0.Functions
                 CreateLeaseContainerIfNotExists = true)]
             IReadOnlyList<Customer>? customers)
         {
+            _logger.LogInformation("TRIGGER STARTED");
+
             if (customers is null || customers.Count == 0)
             {
                 _logger.LogInformation("No customer changes detected.");

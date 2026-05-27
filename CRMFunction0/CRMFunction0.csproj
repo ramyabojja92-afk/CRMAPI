@@ -16,8 +16,9 @@
     <PackageReference Include="Microsoft.Azure.Functions.Worker" Version="2.0.0" />
     <PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.CosmosDB" Version="4.11.0" />
     <PackageReference Include="Microsoft.Azure.Functions.Worker.Extensions.Http.AspNetCore" Version="2.0.0" />
-    <PackageReference Include="Microsoft.Azure.Functions.Worker.Sdk" Version="2.0.0" />
+	  <PackageReference Include="Microsoft.Azure.Functions.Worker.Sdk" Version="2.0.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.UserSecrets" Version="10.0.3" />
+    <PackageReference Include="MimeKit" Version="4.17.0" />
   </ItemGroup>
   <ItemGroup>
     <None Update="host.json">
@@ -31,4 +32,5 @@
   <ItemGroup>
     <Using Include="System.Threading.ExecutionContext" Alias="ExecutionContext" />
   </ItemGroup>
+  <ProjectExtensions><VisualStudio><UserProperties local_1settings_1json__JsonSchema="https://www.schemastore.org/mdxlintrc.json" /></VisualStudio></ProjectExtensions>
 </Project>

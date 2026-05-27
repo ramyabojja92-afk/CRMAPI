@@ -17,7 +17,7 @@ builder.Services.AddSingleton(sp =>
 {
     var config = sp.GetRequiredService<IConfiguration>();
 
-    var conn = config.GetConnectionString("CosmosDb");
+    var conn = config["CosmosDb"];
 
     var options = new CosmosClientOptions
     {
